@@ -1,85 +1,38 @@
-# Enterprise Chatbot System (MVP)
+# Lorikeet
 
-An MVP built with Next.js to demo an internal enterprise assistant that can ingest user questions from multiple channels and search for answers across Confluence-like docs, Jira-like tickets, and previously answered chats. A terminal-style console shows the system's "thinking" steps for transparent demos.
-
-## Overview
-
-- Left panel (75% width): four stacked windows simulating common enterprise tools
-  - Outlook-like email
-  - Teams-like chatbot
-  - Jira-like issues list and details
-  - Confluence-like documentation
-- Right panel (25% width): terminal-style console with timestamped, color-coded logs
-
-This structure makes it easy to walk stakeholders through how questions flow through different knowledge sources and how the system reasons about answers.
-
-## Tech Stack
-
-- Next.js (App Router) + TypeScript
-- Tailwind CSS
-- React Context for state management
-- Lucide icons
-
-## Features
-
-- Email interface: inbox list, priorities, unread state, message view
-- Chat interface: user/bot messages, timestamps, simulated responses
-- Jira interface: tickets with status/priority/assignee, details view
-- Confluence interface: searchable docs, categories, tags, preview & full view
-- Terminal console: scrollback, timestamps, log levels (info/warning/error/success)
-
-## App Structure
-
-```
-src/
-  app/
-    layout.tsx        # Root layout
-    page.tsx          # Mounts the entire MVP
-    globals.css       # Global styles + Tailwind
-  components/
-    layout/           # Page layout containers
-    interfaces/       # Outlook/Teams/Jira/Confluence
-    terminal/         # TerminalConsole
-  context/
-    AppContext.tsx    # Global state & actions
-  data/
-    mockData.ts       # Seed data for demo
-  types/
-    index.ts          # Shared TypeScript types
-```
-
-## How It Works (Demo Flow)
-
-1. Ask a question in the Teams-like chat or click an email with a question
-2. The system "thinks" and logs steps in the console, e.g.:
-   - Searching Confluence documentation
-   - Analyzing related Jira tickets
-   - Checking previously answered questions
-3. If an answer is found, the bot replies; otherwise it would escalate (future work)
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
+First, run the development server:
+
 ```bash
-npm install
 npm run dev
-# Open http://localhost:3000
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Customizing the Demo
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- Update mock data in `src/data/mockData.ts`
-- Extend global actions / state in `src/context/AppContext.tsx`
-- Adjust the layout in `src/components/layout/*`
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Roadmap
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Inter](https://fonts.google.com/specimen/Inter), a custom Google Font.
 
-- Real data sources (Confluence/Jira) via API integrations
-- Auth and user roles
-- Question routing/assignment UI for unresolved cases
-- Persistent storage for previous Q&A
-- Streaming/animated "thinking" updates
+## Learn More
 
-## License
+To learn more about Next.js, take a look at the following resources:
 
-MIT
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
