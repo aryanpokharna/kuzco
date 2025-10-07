@@ -46,6 +46,8 @@ import {
   Trash,
 } from "lucide-react";
 import { useRef, useState } from "react";
+import icon from "@/public/kuzco.webp";
+import Image from "next/image";
 
 // Initial conversation history
 const conversationHistory = [
@@ -176,9 +178,15 @@ function ChatSidebar() {
     <Sidebar>
       <SidebarHeader className="flex flex-row items-center justify-between gap-2 px-2 py-4">
         <div className="flex flex-row items-center gap-2 px-2">
-          <div className="bg-primary/10 size-8 rounded-md"></div>
+          <Image
+            src={icon}
+            alt="An icon of Kuzco"
+            width={36}
+            height={36}
+            className="rounded-md"
+          />
           <div className="text-md font-base text-primary tracking-tight">
-            ACME
+            Kuzco
           </div>
         </div>
         <Button variant="ghost" className="size-8">
