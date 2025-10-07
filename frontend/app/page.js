@@ -50,25 +50,37 @@ import { useRef, useState } from "react";
 // Initial conversation history
 const conversationHistory = [
   {
+    period: "Permanent",
+    conversations: [
+      {
+        id: "p1",
+        title: "Solo Developer (You)",
+        lastMessage:
+          "Waiting for your approval on creating 4 new JIRA tickets.",
+        timestamp: new Date().setDate(new Date().getHours()),
+      },
+    ],
+  },
+  {
     period: "Today",
     conversations: [
       {
         id: "t1",
-        title: "Project roadmap discussion",
+        title: "Head Trader",
         lastMessage:
           "Let's prioritize the authentication features for the next sprint.",
         timestamp: new Date().setHours(new Date().getHours() - 2),
       },
       {
         id: "t2",
-        title: "API Documentation Review",
+        title: "Quant Researcher",
         lastMessage:
           "The endpoint descriptions need more detail about rate limiting.",
         timestamp: new Date().setHours(new Date().getHours() - 5),
       },
       {
         id: "t3",
-        title: "Frontend Bug Analysis",
+        title: "Market Data Engineer",
         lastMessage:
           "I found the issue - we need to handle the null state in the user profile component.",
         timestamp: new Date().setHours(new Date().getHours() - 8),
@@ -80,14 +92,14 @@ const conversationHistory = [
     conversations: [
       {
         id: "y1",
-        title: "Database Schema Design",
+        title: "Risk Manager",
         lastMessage:
           "Let's add indexes to improve query performance on these tables.",
         timestamp: new Date().setDate(new Date().getDate() - 1),
       },
       {
         id: "y2",
-        title: "Performance Optimization",
+        title: "Quant Developer",
         lastMessage:
           "The lazy loading implementation reduced initial load time by 40%.",
         timestamp: new Date().setDate(new Date().getDate() - 1),
@@ -99,20 +111,20 @@ const conversationHistory = [
     conversations: [
       {
         id: "w1",
-        title: "Authentication Flow",
+        title: "Compliance Officer",
         lastMessage: "We should implement the OAuth2 flow with refresh tokens.",
         timestamp: new Date().setDate(new Date().getDate() - 3),
       },
       {
         id: "w2",
-        title: "Component Library",
+        title: "Portfolio Manager",
         lastMessage:
           "These new UI components follow the design system guidelines perfectly.",
         timestamp: new Date().setDate(new Date().getDate() - 5),
       },
       {
         id: "w3",
-        title: "UI/UX Feedback",
+        title: "Operations Analyst",
         lastMessage:
           "The navigation redesign received positive feedback from the test group.",
         timestamp: new Date().setDate(new Date().getDate() - 6),
@@ -124,7 +136,7 @@ const conversationHistory = [
     conversations: [
       {
         id: "m1",
-        title: "Initial Project Setup",
+        title: "Chief Investment Officer",
         lastMessage:
           "All the development environments are now configured consistently.",
         timestamp: new Date().setDate(new Date().getDate() - 15),
@@ -166,7 +178,7 @@ function ChatSidebar() {
         <div className="flex flex-row items-center gap-2 px-2">
           <div className="bg-primary/10 size-8 rounded-md"></div>
           <div className="text-md font-base text-primary tracking-tight">
-            zola.chat
+            ACME
           </div>
         </div>
         <Button variant="ghost" className="size-8">
@@ -204,7 +216,7 @@ function ChatContent() {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [chatMessages, setChatMessages] = useState(initialMessages);
-  // const chatContainerRef = useRef < HTMLDivElement > null;
+  const chatContainerRef = useRef(null);
 
   const handleSubmit = () => {
     if (!prompt.trim()) return;
@@ -241,7 +253,7 @@ function ChatContent() {
         <div className="text-foreground">Project roadmap discussion</div>
       </header>
 
-      {/* <div ref={chatContainerRef} className="relative flex-1 overflow-y-auto">
+      <div ref={chatContainerRef} className="relative flex-1 overflow-y-auto">
         <ChatContainerRoot className="h-full">
           <ChatContainerContent className="space-y-0 px-5 py-12">
             {chatMessages.map((message, index) => {
@@ -347,7 +359,7 @@ function ChatContent() {
             <ScrollButton className="shadow-sm" />
           </div>
         </ChatContainerRoot>
-      </div> */}
+      </div>
 
       <div className="bg-background z-10 shrink-0 px-3 pb-3 md:px-5 md:pb-5">
         <div className="mx-auto max-w-3xl">
